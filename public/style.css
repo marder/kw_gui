@@ -1,0 +1,90 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1.text-center, h2.text-center {
+    color: #343a40;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Ensure the parent of courtInput has relative positioning for absolute children */
+.mb-3 {
+    position: relative;
+    z-index: 1; /* Ensure this div is above other content */
+}
+
+#courtInput {
+    /* Allow default Bootstrap styling */
+}
+
+#suggestions-container {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    /* Position directly below the input field, with a small gap */
+    top: calc(100% + 5px);
+    left: 0;
+}
+
+#suggestions {
+    width: 100%;
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Enable scrolling */
+    border: 1px solid #ced4da;
+    border-radius: 4px; /* Apply full border-radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: #fff; /* Ensure suggestions are not transparent */
+    display: none; /* Hidden by default, shown by JavaScript */
+}
+
+#suggestions .list-group-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.2s ease;
+}
+
+#suggestions .list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.table thead th {
+    background-color: #e2e6ea;
+    color: #495057;
+    font-weight: 600;
+}
+
+.table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
