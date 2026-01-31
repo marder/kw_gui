@@ -1,4 +1,3 @@
-// AUTOCOMPLETE
 const input = document.getElementById("courtInput");
 const hiddenCourt = document.getElementById("court");
 const suggestions = document.getElementById("suggestions");
@@ -13,7 +12,7 @@ input.addEventListener("input", () => {
 
     if (value.length === 0) {
         hiddenCourt.value = "";
-        suggestions.style.display = 'none'; // Hide suggestions when input is empty
+        suggestions.style.display = 'none';
         return;
     }
 
@@ -32,15 +31,15 @@ input.addEventListener("input", () => {
                 input.value = `${court.city} (${court.code})`;
                 hiddenCourt.value = court.code;
                 suggestions.innerHTML = "";
-                suggestions.style.display = 'none'; // Hide suggestions after selection
-                validateInput(); // Just validate, don't generate KW yet
+                suggestions.style.display = 'none';
+                validateInput();
             });
 
             suggestions.appendChild(li);
         });
-        suggestions.style.display = 'block'; // Show suggestions when there are results
+        suggestions.style.display = 'block';
     } else {
-        suggestions.style.display = 'none'; // Hide suggestions if no results
+        suggestions.style.display = 'none';
     }
 });
 
@@ -51,7 +50,6 @@ function validateInput() {
     const courtCode = hiddenCourt.value.trim();
     const oldKw = oldKwInput.value.trim();
 
-    // Basic client-side validation for visual feedback
     if (courtCode.length === 4) {
         input.classList.add("is-valid");
         input.classList.remove("is-invalid");
@@ -82,7 +80,7 @@ async function handleGenerateClick() {
     }
 
     await generateKW(courtCode, oldKw);
-    fetchHistory(); // Refresh history after generation
+    fetchHistory();
 }
 
 async function generateKW(court, old) {
@@ -121,9 +119,8 @@ async function fetchHistory() {
         const response = await fetch('/kw');
         const records = await response.json();
 
-        historyTableBody.innerHTML = ''; // Clear existing records
+        historyTableBody.innerHTML = '';
 
-        // Display only the last 10 records
         const latestRecords = records.slice(-10).reverse();
 
         latestRecords.forEach(record => {
@@ -136,11 +133,10 @@ async function fetchHistory() {
         });
     } catch (error) {
         console.error("Błąd podczas pobierania historii:", error);
-        // Optionally display an error message in the table or elsewhere
+
     }
 }
 
-// Initial fetch and validation when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     fetchHistory();
     validateInput();
